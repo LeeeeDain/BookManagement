@@ -143,9 +143,51 @@ public class MadangDAO {
      
       try{
           con = getConn();
-          String sql = "TRUNCATE orders";
+          String sql = "delete from orders";
           ps = con.prepareStatement(sql);
-          ps.executeUpdate();         
+          ps.executeUpdate();
+          sql = "delete from book";
+          ps = con.prepareStatement(sql);
+          ps.executeUpdate();
+          sql = "delete from customer";
+          ps = con.prepareStatement(sql);
+          ps.executeUpdate();
+     
+          sql ="INSERT INTO Book VALUES(1, '축구의 역사', '굿스포츠', 7000),"
+            		+ "(2, '축구아는 여자', '나무수', 13000),"
+            		+ "(3, '축구의 이해', '대한미디어', 22000),"
+            		+ "(4, '골프 바이블', '대한미디어', 35000),"
+            		+ "(5, '피겨 교본', '굿스포츠', 8000),"
+            		+ "(6, '역도 단계별기술', '굿스포츠', 6000),"
+            		+ "(7, '야구의 추억', '이상미디어', 20000),"
+            		+ "(8, '야구를 부탁해', '이상미디어', 13000),"
+            		+ "(9, '올림픽 이야기', '삼성당', 7500),"
+            		+ "(10, 'Olympic Champions', 'Pearson', 13000),"
+            		+ "(11, '이방인 페스트', '민음사', 16200),"
+            		+ "(12, '데미안', '더스토리', 10800),"
+            		+ "(13, '페스트', '민음사', 11700),"
+            		+ "(14, '녹나무의 파수꾼', '소미미디어', 16020),"
+            		+ "(15, '아몬드', '창비', 10800),"
+            		+ "(16, '어둠의 눈', '다산책방', 14400),"
+            		+ "(17, '세상의 주인', '메이븐', 13500),"
+            		+ "(18, '마음을 읽는 아이 오로르', '밝은세상', 13500),"
+            		+ "(19, '사서함 110호의 우편물', '시공사', 11700),"
+            		+ "(20, '김의 나라', '피람북', 13500);";
+          ps = con.prepareStatement(sql);
+          ps.executeUpdate();
+          sql ="INSERT INTO Customer VALUES (1, '박지성', '영국 맨체스타', '000-5000-0001'),"
+            		+ "(2, '김연아', '대한민국 서울', '000-6000-0001'),"
+            		+ "(3, '장미란', '대한민국 강원도', '000-7000-0001'),"
+            		+ "(4, '추신수', '미국 클리블랜드', '000-8000-0001'),"
+            		+ "(5, '박세리', '대한민국 대전',  NULL),"
+            		+ "(6, '이다인', '호주 시드니', '000-4000-0001'),"
+            		+ "(7, '이아인', '대한민국 강원도', '000-9000-0001'),"
+            		+ "(8, '박미경', '일본 도쿄', '000-1000-0001'),"
+            		+ "(9, '이기헌', '중국 왕푸징', '000-2000-0001'),"
+            		+ "(10, '오뿌똥', '영국 런던', '000-3000-0001');";
+          ps = con.prepareStatement(sql);
+          ps.executeUpdate();
+            
           sql ="INSERT INTO Orders VALUES (1, 1, 1, 6000, STR_TO_DATE('2014-07-01','%Y-%m-%d'))," +
           		  "(2, 1, 3, 21000, STR_TO_DATE('2014-07-03','%Y-%m-%d'))," +
             		"(3, 2, 5, 8000, STR_TO_DATE('2014-07-03','%Y-%m-%d')),"+ 
@@ -167,7 +209,7 @@ public class MadangDAO {
             		"(19, 2, 19, 11700, STR_TO_DATE('2014-07-09','%Y-%m-%d'))," + 
             		"(20, 8, 20, 7000, STR_TO_DATE('2014-07-09','%Y-%m-%d'))";
           ps = con.prepareStatement(sql);
-          ps.executeUpdate();
+          ps.executeUpdate(); 
       }catch(Exception e){
           e.printStackTrace();
       }
