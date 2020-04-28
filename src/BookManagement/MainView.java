@@ -72,7 +72,7 @@ public class MainView extends JFrame implements MouseListener,ActionListener{
        col.add("주문번호");
        col.add("고객번호");
        col.add("책번호");
-       col.add("회원가격");
+       col.add("세일가격");
        col.add("주문날짜");
        return col;
    }

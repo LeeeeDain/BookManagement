@@ -1,16 +1,16 @@
 package BookManagement;
 
 public class OrderDTO {
-   private int orderid;
+   private String orderid;
    private String custid;
    private String bookid;
    private String saleprice;
    private String orderdate;
   
-   public int getOrderId() {
+   public String getOrderId() {
        return orderid;
    }
-   public void setOrderId(int orderid) {
+   public void setOrderId(String orderid) {
        this.orderid = orderid;
    }
    public String getCustId() {
@@ -43,7 +43,7 @@ public class OrderDTO {
    //이클립스팁 : toString() 자동생성: 우클릭 -> source -> Generate toString->[OK]
    @Override
    public String toString() {
-       return "OrderDTO [orderid=" + Integer.toString(orderid) + ", custid=" + custid + ", bookid=" + bookid
+       return "OrderDTO [orderid=" + orderid + ", custid=" + custid + ", bookid=" + bookid
                + ", saleprice=" + saleprice + ", orderdate=" + orderdate + "]";
    }
 }
