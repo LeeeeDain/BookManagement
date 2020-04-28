@@ -7,8 +7,8 @@ import javax.swing.table.DefaultTableModel;
 public class MadangDAO {
   private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
   private static final String URL = "jdbc:mysql://localhost:3306/madang?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"; 
-  private static final String USER = "root"; //DB ID
-  private static final String PASS = "0000"; //DB 패스워드
+  private static final String USER = "madang"; //DB ID
+  private static final String PASS = "madang"; //DB 패스워드
   MainView mList;
  
   public MadangDAO() {
@@ -216,100 +216,7 @@ public class MadangDAO {
       return data;
   }
   
-  
-  /**고객번호 조회*/
-  public boolean isCustomer(String id){
-	  Vector data = new Vector();
-	  Connection con = null; 
-      PreparedStatement ps = null; 
-      ResultSet rs = null;
-      boolean ok = false;
-     
-      try{
-          con = getConn();
-          String sql = "select * from customer where custid='"+id+"';";
-          ps = con.prepareStatement(sql);
-          rs = ps.executeQuery();
-         
-          if(rs.next()){
-        	ok = true;  
-          }
-      }catch(Exception e){
-          e.printStackTrace();
-      }
-      return ok;
-  }
-  
-  
-  /**책 번호 조회*/
-  public boolean isBook(String id){
-	  Connection con = null; 
-      PreparedStatement ps = null; 
-      ResultSet rs = null;
-      boolean ok = false;
-     
-      try{
-          con = getConn();
-          String sql = "select * from book where bookid='"+id+"';";
-          ps = con.prepareStatement(sql);
-          rs = ps.executeQuery();
-         
-          if(rs.next()){
-        	ok = true;  
-          }
-      }catch(Exception e){
-          e.printStackTrace();
-      }
-      return ok;
-  }
-  
-  /**책 가격 반환*/
-  public String getBookPrice(String id){
-	  String price = null;
-	  Connection con = null; 
-      PreparedStatement ps = null; 
-      ResultSet rs = null;
-      
-      try{
-          con = getConn();
-          String sql = "select * from book where bookid='"+id+"';";
-          ps = con.prepareStatement(sql);
-          rs = ps.executeQuery();
-         
-          while(rs.next()){
-        	  price = rs.getString("price");
-          }//while
-      }catch(Exception e){
-          e.printStackTrace();
-      }
-      return price;
-  }
-  
-  
-  /**새로운 주문번호 반환*/
-  public int getNewOrderId(){
-	  int newid = 0;
-	  Connection con = null; 
-      PreparedStatement ps = null; 
-      ResultSet rs = null;
-      
-      try{
-          con = getConn();
-          String sql = "select MAX(orderid) from orders;";
-          ps = con.prepareStatement(sql);
-          rs = ps.executeQuery();
-         
-          while(rs.next()){
-        	  newid = Integer.parseInt(rs.getString(1)) + 1;
-          }//while
-      }catch(Exception e){
-          e.printStackTrace();
-      }
-      return newid;
-  }
-  
-  
-  
+ 
   /**주문 등록*/
   public boolean insertMember(OrderDTO dto){
       boolean ok = false;
@@ -323,7 +230,7 @@ public class MadangDAO {
                       "values(?,?,?,?,?)";
          
           ps = con.prepareStatement(sql);
-          ps.setString(1, Integer.toString(dto.getOrderId()));
+          ps.setString(1, dto.getOrderId());
           ps.setString(2, dto.getCustId());
           ps.setString(3, dto.getBookId());
           ps.setString(4, dto.getSalePrice());
@@ -338,7 +245,6 @@ public class MadangDAO {
               System.out.println("주문 실패");
           }
       }catch(Exception e){
-          e.printStackTrace();
       }
      
       return ok;
