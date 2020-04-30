@@ -25,6 +25,7 @@ public class MadangDAO {
          
       } catch (Exception e) {
           e.printStackTrace();
+          System.out.println("Connect madang DB Fail");
       }  
       return con;
   }
@@ -58,7 +59,7 @@ public class MadangDAO {
               data.add(row);             
           }
       }catch(Exception e){
-          e.printStackTrace();
+    	  System.out.println("Select Customer Data Fail");
       }
       return data;
   }
@@ -92,7 +93,7 @@ public class MadangDAO {
               data.add(row);             
           }//while
       }catch(Exception e){
-          e.printStackTrace();
+          System.out.println("Select Book Data Fail");
       }
       return data;
   }//getMemberList()
@@ -128,7 +129,7 @@ public class MadangDAO {
               data.add(row);             
           }//while
       }catch(Exception e){
-          e.printStackTrace();
+          System.out.println("Select Order Data Fail");
       }
       return data;
   }//getMemberList()
@@ -211,7 +212,7 @@ public class MadangDAO {
           ps = con.prepareStatement(sql);
           ps.executeUpdate(); 
       }catch(Exception e){
-          e.printStackTrace();
+          System.out.println("Reset Data Fail");
       }
       return data;
   }
@@ -245,6 +246,7 @@ public class MadangDAO {
               System.out.println("주문 실패");
           }
       }catch(Exception e){
+          System.out.println("Insert Order Data Fail");
       }
      
       return ok;
